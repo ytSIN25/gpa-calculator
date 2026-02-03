@@ -8,9 +8,14 @@ let saveTimeout;
 
 // 2. Login & Logout Functions
 async function login() {
+    // This creates the exact link to your GitHub project folder
+    const safeRedirect = window.location.origin + window.location.pathname;
+    
     await _supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: window.location.origin } // Updated for better compatibility
+        options: { 
+            redirectTo: safeRedirect 
+        }
     });
 }
 
