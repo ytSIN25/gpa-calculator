@@ -318,15 +318,71 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
+/* --- RESPONSIVE DESIGN --- */
+
+/* Tablets (iPad, etc.) */
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+        margin: 1.5rem auto;
+    }
+
     .dashboard-summary {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack summary and stats */
+        gap: 1rem;
     }
-    .navbar {
-        padding: 1rem 5%;
-    }
+
     .grade-display {
         font-size: 3.5rem;
+    }
+}
+
+/* Phones (iPhone, Android) */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0.8rem 5%;
+        flex-direction: column; /* Stack logo and login button */
+        gap: 10px;
+        text-align: center;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #login-screen h1 {
+        font-size: 2.2rem;
+    }
+
+    .summary-card {
+        padding: 1.5rem;
+    }
+
+    .grade-display {
+        font-size: 2.8rem;
+    }
+
+    /* Adjust the input grid for narrow screens */
+    .input-grid {
+        grid-template-columns: 1.5fr 1fr 1fr; /* Give more space to assignment name */
+        gap: 8px;
+    }
+
+    .subject-card {
+        padding: 1rem;
+    }
+
+    .subject-name {
+        font-size: 1rem;
+    }
+
+    input {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .static-max {
+        font-size: 0.75rem;
     }
 }
