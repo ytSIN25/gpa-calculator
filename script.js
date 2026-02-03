@@ -29,7 +29,32 @@ function runBrain() {
     const cards = document.querySelectorAll('.subject-card');
     let overallWeightedSum = 0;
     let totalWeight = 0;
+    let hasError = false;
 
+    // 3.1 Validation Pass & Subject Calculation Prep
+    // We calculate subject totals only if valid, but we must check validity first.
+    // To avoid double looping inefficiently, we can do a first pass to check ALL inputs for errors.
+    
+    const allInputs = document.querySelectorAll('.inp-score');
+    allInputs.forEach(input => {
+        const row = input.closest('.assignment-row');
+        const maxVal = parseFloat(row.querySelector('.static-max').textContent) || 100;
+        const val = input.value === "" ? 0 : parseFloat(input.value);
+
+        // Clear legacy inline style if acceptable, or just override with class
+        input.style.backgroundColor = ""; 
+
+        if (val < 0 || val > maxVal) {
+            input.classList.add('error');
+            hasError = true;
+        } else {
+            input.classList.remove('error');
+        }
+    });
+
+    if (hasError) return false;
+
+    // 3.2 Calculation Pass (executes only if no errors)
     cards.forEach(card => {
         const rows = card.querySelectorAll('.assignment-row');
         let subjectTotal = 0;
@@ -41,7 +66,6 @@ function runBrain() {
             const val = scoreInput.value === "" ? 0 : parseFloat(scoreInput.value);
 
             subjectTotal += (val / maxVal) * weight;
-            scoreInput.style.backgroundColor = val > maxVal ? "#fee2e2" : "";
         });
 
         const display = card.querySelector('.subject-total');
@@ -62,6 +86,8 @@ function runBrain() {
 
     if (totalDisplay) totalDisplay.textContent = finalGrade.toFixed(1);
     if (progressBar) progressBar.style.width = `${Math.min(finalGrade, 100)}%`;
+    
+    return true;
 }
 
 // 4. Syncing Logic
@@ -111,6 +137,7 @@ async function loadExistingData(userId) {
     } else {
         inputs.forEach(input => {
             const row = input.closest('.assignment-row');
+            // Default to max? Or 0? Original code defaulted to max.
             const max = row.querySelector('.static-max').textContent;
             input.value = max;
         });
@@ -157,8 +184,10 @@ _supabase.auth.onAuthStateChange((event, session) => {
 // 7. Event Listeners
 document.addEventListener('input', (e) => {
     if (e.target.classList.contains('inp-score')) {
-        runBrain();
-        syncToCloud();
+        const isValid = runBrain();
+        if (isValid) {
+            syncToCloud();
+        }
     }
 });
 

@@ -80,6 +80,7 @@ body {
     margin-bottom: 1rem;
     background: linear-gradient(to right, #10b981, #3b82f6);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -237,6 +238,12 @@ body {
 .inp-score:focus {
     border-color: var(--accent-primary);
     outline: none;
+}
+
+.inp-score.error {
+    border-color: var(--danger);
+    color: var(--danger);
+    background-color: rgba(239, 68, 68, 0.1);
 }
 
 .static-max {
