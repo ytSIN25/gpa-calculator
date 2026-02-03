@@ -52,7 +52,14 @@ function runBrain() {
         }
     });
 
-    if (hasError) return false;
+    if (hasError) {
+        const statusLabel = document.getElementById('status-label');
+        if (statusLabel) {
+            statusLabel.textContent = "Error";
+            statusLabel.style.color = "#ef4444";
+        }
+        return false;
+    }
 
     // 3.2 Calculation Pass (executes only if no errors)
     cards.forEach(card => {
