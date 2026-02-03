@@ -28,7 +28,7 @@ async function logout() {
 function runBrain() {
     const cards = document.querySelectorAll('.subject-card');
     let overallWeightedSum = 0;
-    let subjectCount = cards.length;
+    let totalWeight = 0;
 
     cards.forEach(card => {
         const rows = card.querySelectorAll('.assignment-row');
@@ -46,10 +46,17 @@ function runBrain() {
 
         const display = card.querySelector('.subject-total');
         if (display) display.textContent = `${subjectTotal.toFixed(1)}%`;
-        overallWeightedSum += subjectTotal;
+
+        // Apply subject weight
+        const subjectNameEl = card.querySelector('.subject-name');
+        const subjectName = subjectNameEl ? subjectNameEl.textContent.trim() : '';
+        const subjectWeight = subjectName === 'GENG0033' ? 2 : 1;
+
+        overallWeightedSum += subjectTotal * subjectWeight;
+        totalWeight += subjectWeight;
     });
 
-    const finalGrade = overallWeightedSum / subjectCount;
+    const finalGrade = totalWeight > 0 ? overallWeightedSum / totalWeight : 0;
     const totalDisplay = document.getElementById('total-grade');
     const progressBar = document.getElementById('overall-progress');
 
