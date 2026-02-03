@@ -158,3 +158,24 @@ document.addEventListener('input', (e) => {
 document.addEventListener('focusin', (e) => {
     if (e.target.classList.contains('inp-score')) e.target.select();
 });
+
+// Accordion Logic: Click to Open/Close
+document.addEventListener('click', (e) => {
+    const card = e.target.closest('.subject-card');
+    
+    // If we didn't click a card, or we clicked an input/button inside a card, don't toggle
+    if (!card || e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+
+    // 1. Check if this card is already open
+    const isActive = card.classList.contains('is-active');
+
+    // 2. Close ALL other cards
+    document.querySelectorAll('.subject-card').forEach(c => {
+        c.classList.remove('is-active');
+    });
+
+    // 3. If the clicked card wasn't open, open it now
+    if (!isActive) {
+        card.classList.add('is-active');
+    }
+});
