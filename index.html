@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeTracker Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">GradeTracker<span>Pro</span></div>
+        <div class="nav-right">
+            <span id="user-email" class="user-label">Not logged in</span>
+            <button id="login-btn" class="btn-primary">Login with Google</button>
+        </div>
+    </nav>
+
+    <div id="login-screen" class="login-overlay">
+        <h1>Welcome to Grade Tracker</h1>
+        <p>Please sign in with Google to access your dashboard and save your progress.</p>
+        <button id="login-gate-btn" class="btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+            Sign in with Google
+        </button>
+    </div>
+
+    <div id="main-dashboard">
+        <main class="container">
+            <section class="dashboard-summary">
+                <div class="summary-card">
+                    <h2>Overall Foundation Mark</h2>
+                    <div class="grade-display">
+                        <span id="total-grade">0.0</span><small>%</small>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="overall-progress" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="stats-panel">
+                    <div class="stat-box">
+                        <span class="stat-label">Subjects</span>
+                        <span class="stat-value" id="subject-count">7</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Status</span>
+                        <span class="stat-value status-text" id="status-label">Pending</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="subjects-container" class="subjects-grid">
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">Math A</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="100">
+                            <input type="text" value="Final Exam" readonly>
+                            <input type="number" class="inp-score" placeholder="0">
+                            <span class="static-max">100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">Math B</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="100">
+                            <input type="text" value="Final Exam" readonly>
+                            <input type="number" class="inp-score" placeholder="0">
+                            <span class="static-max">100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">GENG0014</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="10"><input type="text" value="Quiz" readonly><input type="number" class="inp-score"><span class="static-max">10</span></div>
+                        <div class="input-grid assignment-row" data-weight="20"><input type="text" value="Excel" readonly><input type="number" class="inp-score"><span class="static-max">20</span></div>
+                        <div class="input-grid assignment-row" data-weight="30"><input type="text" value="Research" readonly><input type="number" class="inp-score"><span class="static-max">30</span></div>
+                        <div class="input-grid assignment-row" data-weight="20"><input type="text" value="Groupwork" readonly><input type="number" class="inp-score"><span class="static-max">20</span></div>
+                        <div class="input-grid assignment-row" data-weight="10"><input type="text" value="Poster" readonly><input type="number" class="inp-score"><span class="static-max">10</span></div>
+                        <div class="input-grid assignment-row" data-weight="10"><input type="text" value="Presentation" readonly><input type="number" class="inp-score"><span class="static-max">10</span></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">GENG0030</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="25"><input type="text" value="Test 1" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="20"><input type="text" value="Test 2" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="55"><input type="text" value="Final Exam" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">GENG0032</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="15"><input type="text" value="Test 1" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="15"><input type="text" value="Test 2" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="15"><input type="text" value="Test 3" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="55"><input type="text" value="Final Exam" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">GENG0033</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="12"><input type="text" value="Python Labwork" readonly><input type="number" class="inp-score"><span class="static-max">12</span></div>
+                        <div class="input-grid assignment-row" data-weight="12"><input type="text" value="0035 Lab" readonly><input type="number" class="inp-score"><span class="static-max">12</span></div>
+                        <div class="input-grid assignment-row" data-weight="12"><input type="text" value="Python GUI" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="12"><input type="text" value="Formal Report 1" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="12"><input type="text" value="Formal Report 2" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="8"><input type="text" value="Poster" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="10"><input type="text" value="Python Test" readonly><input type="number" class="inp-score"><span class="static-max">30</span></div>
+                        <div class="input-grid assignment-row" data-weight="2"><input type="text" value="Labwork" readonly><input type="number" class="inp-score"><span class="static-max">2</span></div>
+                        <div class="input-grid assignment-row" data-weight="20"><input type="text" value="Teamwork" readonly><input type="number" class="inp-score"><span class="static-max">20</span></div>
+                    </div>
+                </div>
+
+                <div class="subject-card">
+                    <div class="subject-header">
+                        <div class="subject-title-group"><span class="status-dot green"></span><span class="subject-name">GENG0035</span></div>
+                        <span class="subject-total">0%</span>
+                    </div>
+                    <div class="assignment-list">
+                        <div class="input-grid header"><span>Assignment</span><span>Score</span><span>Out Of</span></div>
+                        <div class="input-grid assignment-row" data-weight="15"><input type="text" value="Coursework 1" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="15"><input type="text" value="Coursework 2" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                        <div class="input-grid assignment-row" data-weight="30"><input type="text" value="Sem 2" readonly><input type="number" class="inp-score"><span class="static-max">200</span></div>
+                        <div class="input-grid assignment-row" data-weight="40"><input type="text" value="Final Assignment" readonly><input type="number" class="inp-score"><span class="static-max">100</span></div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
